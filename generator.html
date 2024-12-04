@@ -145,8 +145,6 @@
           </div>
         </div>
         <div class="barcode-container">
-          <div id="barcodes"></div>
-          <span id="invalid">Not valid data for this barcode type!</span>
           <div id="download-controls" style="display: none; margin-top: 20px;">
             <select class="form-control" id="download-format" style="width: auto; display: inline-block; margin-right: 10px;">
               <option value="svg">SVG</option>
@@ -156,7 +154,12 @@
             <button class="btn btn-primary" id="download-btn">
               <i class="fa fa-download"></i> Download
             </button>
+            <button class="btn btn-secondary" id="print-btn">
+              <i class="fa fa-print"></i> Print
+            </button>
           </div>
+          <div id="barcodes"></div>
+          <span id="invalid">Not valid data for this barcode type!</span>
         </div>
       </div>
     </div>

@@ -76,6 +76,9 @@ $(document).ready(function(){
     // Add download button handler
     $("#download-btn").click(handleDownload);
     
+    // Add print button handler
+    $("#print-btn").click(handlePrint);
+
     newBarcode();
 });
 
@@ -216,4 +219,28 @@ function downloadBarcode(svgElement, format, index) {
         
         img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
     }
+}
+
+function handlePrint() {
+    const printWindow = window.open('', '_blank');
+    const barcodes = $("#barcodes").html();
+    
+    printWindow.document.open();
+    printWindow.document.write(`
+        <html>
+        <head>
+            <title>Print Barcodes</title>
+            <style>
+                .barcode {
+                    display: block;
+                    margin-bottom: 20px;
+                }
+            </style>
+        </head>
+        <body onload="window.print(); window.close();">
+            ${barcodes}
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
 }
