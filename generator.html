@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html lang="en-US">
   <head>
@@ -22,139 +21,132 @@
   </head>
   <body>
     <div id="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-            <div id="title">
-              <h1>Free Online Bulk Barcode Generator</h1>
+      <div class="layout-wrapper">
+        <div class="container">
+          <div class="row search-bar">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="input-group margin-bottom-sm">
+                <span class="input-group-addon"><i class="fa fa-barcode fa-fw"></i></span>
+                <textarea class="form-control" id="userInput" rows="5" placeholder="Enter one barcode per line">Example 1234</textarea>
+                <span class="input-group-btn">
+                  <select class="btn barcode-select" id="barcodeType" title="CODE128" style="height: 100%;">
+                    <option value="CODE128">CODE128 auto</option>
+                    <option value="CODE128A">CODE128 A</option>
+                    <option value="CODE128B">CODE128 B</option>
+                    <option value="CODE128C">CODE128 C</option>
+                    <option value="EAN13">EAN13</option>
+                    <option value="EAN8">EAN8</option>
+                    <option value="UPC">UPC</option>
+                    <option value="CODE39">CODE39</option>
+                    <option value="ITF14">ITF14</option>
+                    <option value="ITF">ITF</option>
+                    <option value="MSI">MSI</option>
+                    <option value="MSI10">MSI10</option>
+                    <option value="MSI11">MSI11</option>
+                    <option value="MSI1010">MSI1010</option>
+                    <option value="MSI1110">MSI1110</option>
+                    <option value="pharmacode">Pharmacode</option>
+                  </select>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="barcode-container">
-        <div id="barcodes"></div>
-        <span id="invalid">Not valid data for this barcode type!</span>
-      </div>
-      <div class="container">
-        <div class="row search-bar">
-          <div class="col-md-10 col-md-offset-1">
-            <div class="input-group margin-bottom-sm">
-              <span class="input-group-addon"><i class="fa fa-barcode fa-fw"></i></span>
-              <textarea class="form-control" id="userInput" rows="5" placeholder="Enter one barcode per line">Example 1234</textarea>
-              <span class="input-group-btn">
-                <select class="btn barcode-select" id="barcodeType" title="CODE128" style="height: 100%;">
-                  <option value="CODE128">CODE128 auto</option>
-                  <option value="CODE128A">CODE128 A</option>
-                  <option value="CODE128B">CODE128 B</option>
-                  <option value="CODE128C">CODE128 C</option>
-                  <option value="EAN13">EAN13</option>
-                  <option value="EAN8">EAN8</option>
-                  <option value="UPC">UPC</option>
-                  <option value="CODE39">CODE39</option>
-                  <option value="ITF14">ITF14</option>
-                  <option value="ITF">ITF</option>
-                  <option value="MSI">MSI</option>
-                  <option value="MSI10">MSI10</option>
-                  <option value="MSI11">MSI11</option>
-                  <option value="MSI1010">MSI1010</option>
-                  <option value="MSI1110">MSI1110</option>
-                  <option value="pharmacode">Pharmacode</option>
+          <!-- Bar width -->
+          <div class="row">
+            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Bar Width</p></div>
+            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-width" type="range" min="1" max="4" step="1" value="2"/></div>
+            <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-width-display"></span></p></div>
+          </div>
+          <!-- Height -->
+          <div class="row">
+            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Height</p></div>
+            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-height" type="range" min="10" max="150" step="5" value="100"/></div>
+            <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-height-display"></span></p></div>
+          </div>
+          <!-- Margin -->
+          <div class="row">
+            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Margin</p></div>
+            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-margin" type="range" min="0" max="25" step="1" value="10"/></div>
+            <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-margin-display"></span></p></div>
+          </div>
+          <!-- Background (color) -->
+          <div class="row">
+            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Background</p></div>
+            <div class="col-md-7 col-xs-11 input-container"><input id="background-color" class="form-control color" value="#FFFFFF"/></div>
+            <div class="col-md-1 col-xs-1 value-text"></div>
+          </div>
+          <!-- Line color -->
+          <div class="row">
+            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Line Color</p></div>
+            <div class="col-md-7 col-xs-11 input-container"><input id="line-color" class="form-control color" value="#000000"/></div>
+            <div class="col-md-1 col-xs-1 value-text"></div>
+          </div>
+          <!-- Show text -->
+          <div class="row checkbox-options">
+            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Show text</p></div>
+            <div class="col-md-7 col-xs-12 center-text">
+              <div class="btn-group btn-group-md" role="toolbar">
+                <button type="button" class="btn btn-default btn-primary display-text" value="true">Show</button>
+                <button type="button" class="btn btn-default display-text" value="false">Hide</button>
+              </div>
+            </div>
+            <div class="col-md-1 col-xs-0"></div>
+          </div>
+          <div id="font-options">
+            <!-- Text align -->
+            <div class="row checkbox-options">
+              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Align</p></div>
+              <div class="col-md-7 center-text">
+                <div class="btn-group btn-group-md" role="toolbar">
+                  <button type="button" class="btn btn-default text-align" value="left">Left</button>
+                  <button type="button" class="btn btn-default btn-primary text-align" value="center">Center</button>
+                  <button type="button" class="btn btn-default text-align" value="right">Right</button>
+                </div>
+              </div>
+              <div class="col-md-1"></div>
+            </div>
+            <!-- Font -->
+            <div class="row">
+              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font</p></div>
+              <div class="col-md-7 center-text">
+                <select class="form-control" id="font" style="font-family: monospace">
+                  <option value="monospace" style="font-family: monospace" selected="selected">Monospace</option>
+                  <option value="sans-serif" style="font-family: sans-serif">Sans-serif</option>
+                  <option value="serif" style="font-family: serif">Serif</option>
+                  <option value="fantasy" style="font-family: fantasy">Fantasy</option>
+                  <option value="cursive" style="font-family: cursive">Cursive</option>
                 </select>
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- Bar width -->
-        <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Bar Width</p></div>
-          <div class="col-md-7 col-xs-11 slider-container"><input id="bar-width" type="range" min="1" max="4" step="1" value="2"/></div>
-          <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-width-display"></span></p></div>
-        </div>
-        <!-- Height -->
-        <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Height</p></div>
-          <div class="col-md-7 col-xs-11 slider-container"><input id="bar-height" type="range" min="10" max="150" step="5" value="100"/></div>
-          <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-height-display"></span></p></div>
-        </div>
-        <!-- Margin -->
-        <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Margin</p></div>
-          <div class="col-md-7 col-xs-11 slider-container"><input id="bar-margin" type="range" min="0" max="25" step="1" value="10"/></div>
-          <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-margin-display"></span></p></div>
-        </div>
-        <!-- Background (color) -->
-        <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Background</p></div>
-          <div class="col-md-7 col-xs-11 input-container"><input id="background-color" class="form-control color" value="#FFFFFF"/></div>
-          <div class="col-md-1 col-xs-1 value-text"></div>
-        </div>
-        <!-- Line color -->
-        <div class="row">
-          <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Line Color</p></div>
-          <div class="col-md-7 col-xs-11 input-container"><input id="line-color" class="form-control color" value="#000000"/></div>
-          <div class="col-md-1 col-xs-1 value-text"></div>
-        </div>
-        <!-- Show text -->
-        <div class="row checkbox-options">
-          <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Show text</p></div>
-          <div class="col-md-7 col-xs-12 center-text">
-            <div class="btn-group btn-group-md" role="toolbar">
-              <button type="button" class="btn btn-default btn-primary display-text" value="true">Show</button>
-              <button type="button" class="btn btn-default display-text" value="false">Hide</button>
-            </div>
-          </div>
-          <div class="col-md-1 col-xs-0"></div>
-        </div>
-        <div id="font-options">
-          <!-- Text align -->
-          <div class="row checkbox-options">
-            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Align</p></div>
-            <div class="col-md-7 center-text">
-              <div class="btn-group btn-group-md" role="toolbar">
-                <button type="button" class="btn btn-default text-align" value="left">Left</button>
-                <button type="button" class="btn btn-default btn-primary text-align" value="center">Center</button>
-                <button type="button" class="btn btn-default text-align" value="right">Right</button>
               </div>
+              <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
-          </div>
-          <!-- Font -->
-          <div class="row">
-            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font</p></div>
-            <div class="col-md-7 center-text">
-              <select class="form-control" id="font" style="font-family: monospace">
-                <option value="monospace" style="font-family: monospace" selected="selected">Monospace</option>
-                <option value="sans-serif" style="font-family: sans-serif">Sans-serif</option>
-                <option value="serif" style="font-family: serif">Serif</option>
-                <option value="fantasy" style="font-family: fantasy">Fantasy</option>
-                <option value="cursive" style="font-family: cursive">Cursive</option>
-              </select>
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-          <!-- Font options -->
-          <div class="row checkbox-options">
-            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Options</p></div>
-            <div class="col-md-7 center-text">
-              <div class="btn-group btn-group-md" role="toolbar">
-                <button type="button" class="btn btn-default font-option" value="bold" style="font-weight: bold">Bold</button>
-                <button type="button" class="btn btn-default font-option" value="italic" style="font-style: italic">Italic</button>
+            <!-- Font options -->
+            <div class="row checkbox-options">
+              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Options</p></div>
+              <div class="col-md-7 center-text">
+                <div class="btn-group btn-group-md" role="toolbar">
+                  <button type="button" class="btn btn-default font-option" value="bold" style="font-weight: bold">Bold</button>
+                  <button type="button" class="btn btn-default font-option" value="italic" style="font-style: italic">Italic</button>
+                </div>
               </div>
+              <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
+            <!-- Font size -->
+            <div class="row">
+              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Size</p></div>
+              <div class="col-md-7 col-xs-11 slider-container"><input id="bar-fontSize" type="range" min="8" max="36" step="1" value="20"/></div>
+              <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-fontSize-display"></span></p></div>
+            </div>
+            <!-- Text margin -->
+            <div class="row">
+              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Margin</p></div>
+              <div class="col-md-7 col-xs-11 slider-container"><input id="bar-text-margin" type="range" min="-15" max="40" step="1" value="0"/></div>
+              <div class="col-md-1 col-xs-1 col-xs-11 value-text"><p><span id="bar-text-margin-display"></span></p></div>
+            </div>
           </div>
-          <!-- Font size -->
-          <div class="row">
-            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Size</p></div>
-            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-fontSize" type="range" min="8" max="36" step="1" value="20"/></div>
-            <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-fontSize-display"></span></p></div>
-          </div>
-          <!-- Text margin -->
-          <div class="row">
-            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Margin</p></div>
-            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-text-margin" type="range" min="-15" max="40" step="1" value="0"/></div>
-            <div class="col-md-1 col-xs-1 col-xs-11 value-text"><p><span id="bar-text-margin-display"></span></p></div>
-          </div>
+        </div>
+        <div class="barcode-container">
+          <div id="barcodes"></div>
+          <span id="invalid">Not valid data for this barcode type!</span>
         </div>
       </div>
     </div>

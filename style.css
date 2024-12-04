@@ -14,44 +14,46 @@ html{
 
 #main{
     background:#fff;
-    margin: 0 auto;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    box-shadow:0 1px 2px hsla(0, 0%, 0%, 0.3);
-    margin-top:25px;
-    margin-bottom:50px;
-    min-width:768px;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    display: inline-block;
+    margin: 25px auto 50px;
+    padding: 10px 20px;
+    box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.3);
+    width: 95%;
+    max-width: 1200px;
+}
+
+.layout-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
 }
 
 .container{
-  width: 750px;
+  width: 45%;
+  min-width: 400px;
+  flex-shrink: 0;
   text-align: left;
 }
 
-@media (max-width: 800px) {
-  #main{
-    margin-top:0;
-    margin-bottom:0;
-    margin-left:0;
-    margin-right:0;
-    padding-left: 10px;
-    padding-right: 10px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-    width: 100%;
-    min-width:0px;
-  }
-
-  .container{
-    width: 100%;
-  }
-
-  .github-banner{
-    display: none;
-  }
+@media (max-width: 900px) {
+    .layout-wrapper {
+        flex-direction: column;
+    }
+    
+    .container {
+        width: 100%;
+        min-width: 0;
+    }
+    
+    .barcode-container {
+        width: 100%;
+    }
+    
+    #main {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
 }
 
 #userInput{
@@ -103,8 +105,10 @@ html{
 }
 
 .barcode-container{
-  height:200px;
-  line-height: 200px;
+  flex-grow: 1;
+  min-width: 300px;
+  height: auto;
+  padding: 20px;
   text-align: center;
   vertical-align: middle;
   margin-left: 25px;
@@ -154,11 +158,6 @@ html{
 
 .barcode-select{
   border-color: #ccc;
-}
-
-.barcode-container {
-    text-align: center;
-    margin: 20px 0;
 }
 
 #barcodes {
