@@ -107,12 +107,13 @@ html{
 .barcode-container{
   flex-grow: 1;
   min-width: 300px;
-  height: auto;
+  height: 600px;
   padding: 20px;
   text-align: center;
   vertical-align: middle;
   margin-left: 25px;
   margin-right: 25px;
+  overflow-y: scroll;
 }
 
 .description-text{
