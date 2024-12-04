@@ -18,6 +18,8 @@
     <script src="javascripts/jqColorPicker.min.js"></script>
     <script src="javascripts/script.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   </head>
   <body>
     <div id="main">
@@ -147,6 +149,16 @@
         <div class="barcode-container">
           <div id="barcodes"></div>
           <span id="invalid">Not valid data for this barcode type!</span>
+          <div id="download-controls" style="display: none; margin-top: 20px;">
+            <select class="form-control" id="download-format" style="width: auto; display: inline-block; margin-right: 10px;">
+              <option value="svg">SVG</option>
+              <option value="png">PNG</option>
+              <option value="jpg">JPG</option>
+            </select>
+            <button class="btn btn-primary" id="download-btn">
+              <i class="fa fa-download"></i> Download
+            </button>
+          </div>
         </div>
       </div>
     </div>
