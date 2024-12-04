@@ -155,3 +155,33 @@ html{
 .barcode-select{
   border-color: #ccc;
 }
+
+.barcode-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#barcodes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.barcode {
+    max-width: 100%;
+}
+
+#userInput {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.input-group-btn {
+    vertical-align: top;
+}
+
+.barcode-select {
+    height: 100% !important;
+    white-space: normal;
+}

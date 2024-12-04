@@ -77,34 +77,49 @@ $(document).ready(function(){
 });
 
 var newBarcode = function() {
-    //Convert to boolean
-    $("#barcode").JsBarcode(
-        $("#userInput").val(),
-        {
-          "format": $("#barcodeType").val(),
-          "background": $("#background-color").val(),
-          "lineColor": $("#line-color").val(),
-          "fontSize": parseInt($("#bar-fontSize").val()),
-          "height": parseInt($("#bar-height").val()),
-          "width": $("#bar-width").val(),
-          "margin": parseInt($("#bar-margin").val()),
-          "textMargin": parseInt($("#bar-text-margin").val()),
-          "displayValue": $(".display-text.btn-primary").val() == "true",
-          "font": $("#font").val(),
-          "fontOptions": $(".font-option.btn-primary").map(function(){return this.value;}).get().join(" "),
-          "textAlign": $(".text-align.btn-primary").val(),
-          "valid":
-            function(valid){
-              if(valid){
-                $("#barcode").show();
-                $("#invalid").hide();
-              }
-              else{
-                $("#barcode").hide();
-                $("#invalid").show();
-              }
-            }
-        });
+    // Clear previous barcodes
+    $("#barcodes").empty();
+    
+    // Get input lines
+    var lines = $("#userInput").val().split('\n');
+    
+    // Generate barcode for each line
+    lines.forEach(function(line, index) {
+        if(line.trim() === '') return; // Skip empty lines
+        
+        // Create SVG element for this barcode
+        var svgElement = $('<svg class="barcode"></svg>');
+        $("#barcodes").append(svgElement);
+        
+        // Generate barcode
+        svgElement.JsBarcode(
+            line.trim(),
+            {
+                "format": $("#barcodeType").val(),
+                "background": $("#background-color").val(),
+                "lineColor": $("#line-color").val(),
+                "fontSize": parseInt($("#bar-fontSize").val()),
+                "height": parseInt($("#bar-height").val()),
+                "width": $("#bar-width").val(),
+                "margin": parseInt($("#bar-margin").val()),
+                "textMargin": parseInt($("#bar-text-margin").val()),
+                "displayValue": $(".display-text.btn-primary").val() == "true",
+                "font": $("#font").val(),
+                "fontOptions": $(".font-option.btn-primary").map(function(){return this.value;}).get().join(" "),
+                "textAlign": $(".text-align.btn-primary").val(),
+                "valid":
+                    function(valid){
+                        if(valid){
+                            svgElement.show();
+                            $("#invalid").hide();
+                        }
+                        else{
+                            svgElement.hide();
+                            $("#invalid").show();
+                        }
+                    }
+            });
+    });
 
     $("#bar-width-display").text($("#bar-width").val());
     $("#bar-height-display").text($("#bar-height").val());

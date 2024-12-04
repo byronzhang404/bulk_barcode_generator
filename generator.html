@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="barcode-container">
-        <svg id="barcode"></svg>
+        <div id="barcodes"></div>
         <span id="invalid">Not valid data for this barcode type!</span>
       </div>
       <div class="container">
@@ -40,9 +40,9 @@
           <div class="col-md-10 col-md-offset-1">
             <div class="input-group margin-bottom-sm">
               <span class="input-group-addon"><i class="fa fa-barcode fa-fw"></i></span>
-              <input class="form-control" id="userInput" type="text" value="Example 1234" placeholder="Barcode" autofocus>
+              <textarea class="form-control" id="userInput" rows="5" placeholder="Enter one barcode per line">Example 1234</textarea>
               <span class="input-group-btn">
-                <select class="btn barcode-select" id="barcodeType" title="CODE128">
+                <select class="btn barcode-select" id="barcodeType" title="CODE128" style="height: 100%;">
                   <option value="CODE128">CODE128 auto</option>
                   <option value="CODE128A">CODE128 A</option>
                   <option value="CODE128B">CODE128 B</option>
