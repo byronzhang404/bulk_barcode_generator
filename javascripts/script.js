@@ -78,25 +78,32 @@ $(document).ready(function(){
     
     // Add print button handler
     $("#print-btn").click(function() {
-        // 创建打印区域
         var printContent = $("<div>").append($("#barcodes").clone());
         
-        // 创建打印框架
         var printFrame = $('<iframe>', {
             'style': 'position: absolute; width: 0; height: 0; border: 0; visibility: hidden;'
         }).appendTo('body');
         
-        // 设置打印内容的样式
         var printWindow = printFrame[0].contentWindow;
         var printDocument = printWindow.document;
         
         printDocument.write('<!DOCTYPE html><html><head>');
         printDocument.write('<title>Print Barcodes</title>');
-        // 添加必要的样式
         printDocument.write('<style>');
         printDocument.write(`
             body { margin: 0; padding: 20px; }
-            svg { margin: 10px; page-break-inside: avoid; }
+            #barcodes {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                align-items: start;
+                padding: 20px;
+            }
+            .barcode {
+                max-width: 100%;
+                height: auto;
+                page-break-inside: avoid;
+            }
         `);
         printDocument.write('</style>');
         printDocument.write('</head><body>');
@@ -104,11 +111,9 @@ $(document).ready(function(){
         printDocument.write('</body></html>');
         printDocument.close();
         
-        // 等待图片加载完成后打印
         printWindow.onload = function() {
             printWindow.focus();
             printWindow.print();
-            // 打印完成后移除框架
             setTimeout(function() {
                 printFrame.remove();
             }, 1000);
