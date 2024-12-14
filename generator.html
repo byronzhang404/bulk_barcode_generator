@@ -20,7 +20,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <link rel="canonical" href="https://bulkbarcodegenerator.org/generator">
-   
+    <style>
+      .description-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .description-text p {
+        margin: 0;
+        line-height: 34px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .slider-container,
+      .input-container,
+      .center-text {
+        display: flex;
+        align-items: center;
+      }
+    </style>
   </head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MVGG1E36P"></script>
@@ -72,38 +96,38 @@
           </div>
           <!-- Bar width -->
           <div class="row">
-            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Bar Width</p></div>
-            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-width" type="range" min="1" max="4" step="1" value="2"/></div>
+            <div class="col-md-3 col-xs-12 col-md-offset-1 description-text"><p>Bar Width</p></div>
+            <div class="col-md-6 col-xs-11 slider-container"><input id="bar-width" type="range" min="1" max="4" step="1" value="2"/></div>
             <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-width-display"></span></p></div>
           </div>
           <!-- Height -->
           <div class="row">
-            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Height</p></div>
-            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-height" type="range" min="10" max="150" step="5" value="100"/></div>
+            <div class="col-md-3 col-xs-12 col-md-offset-1 description-text"><p>Height</p></div>
+            <div class="col-md-6 col-xs-11 slider-container"><input id="bar-height" type="range" min="10" max="150" step="5" value="100"/></div>
             <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-height-display"></span></p></div>
           </div>
           <!-- Margin -->
           <div class="row">
-            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Margin</p></div>
-            <div class="col-md-7 col-xs-11 slider-container"><input id="bar-margin" type="range" min="0" max="25" step="1" value="10"/></div>
+            <div class="col-md-3 col-xs-12 col-md-offset-1 description-text"><p>Margin</p></div>
+            <div class="col-md-6 col-xs-11 slider-container"><input id="bar-margin" type="range" min="0" max="25" step="1" value="10"/></div>
             <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-margin-display"></span></p></div>
           </div>
           <!-- Background (color) -->
           <div class="row">
-            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Background</p></div>
-            <div class="col-md-7 col-xs-11 input-container"><input id="background-color" class="form-control color" value="#FFFFFF"/></div>
+            <div class="col-md-3 col-xs-12 col-md-offset-1 description-text"><p>Background</p></div>
+            <div class="col-md-6 col-xs-11 input-container"><input id="background-color" class="form-control color" value="#FFFFFF"/></div>
             <div class="col-md-1 col-xs-1 value-text"></div>
           </div>
           <!-- Line color -->
           <div class="row">
-            <div class="col-md-2 col-xs-12 col-md-offset-1 description-text"><p>Line Color</p></div>
-            <div class="col-md-7 col-xs-11 input-container"><input id="line-color" class="form-control color" value="#000000"/></div>
+            <div class="col-md-3 col-xs-12 col-md-offset-1 description-text"><p>Line Color</p></div>
+            <div class="col-md-6 col-xs-11 input-container"><input id="line-color" class="form-control color" value="#000000"/></div>
             <div class="col-md-1 col-xs-1 value-text"></div>
           </div>
           <!-- Show text -->
           <div class="row checkbox-options">
-            <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Show text</p></div>
-            <div class="col-md-7 col-xs-12 center-text">
+            <div class="col-md-3 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Show text</p></div>
+            <div class="col-md-6 col-xs-12 center-text">
               <div class="btn-group btn-group-md" role="toolbar">
                 <button type="button" class="btn btn-default btn-primary display-text" value="true">Show</button>
                 <button type="button" class="btn btn-default display-text" value="false">Hide</button>
@@ -114,8 +138,8 @@
           <div id="font-options">
             <!-- Text align -->
             <div class="row checkbox-options">
-              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Align</p></div>
-              <div class="col-md-7 center-text">
+              <div class="col-md-3 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Align</p></div>
+              <div class="col-md-6 center-text">
                 <div class="btn-group btn-group-md" role="toolbar">
                   <button type="button" class="btn btn-default text-align" value="left">Left</button>
                   <button type="button" class="btn btn-default btn-primary text-align" value="center">Center</button>
@@ -126,8 +150,8 @@
             </div>
             <!-- Font -->
             <div class="row">
-              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font</p></div>
-              <div class="col-md-7 center-text">
+              <div class="col-md-3 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font</p></div>
+              <div class="col-md-6 center-text">
                 <select class="form-control" id="font" style="font-family: monospace">
                   <option value="monospace" style="font-family: monospace" selected="selected">Monospace</option>
                   <option value="sans-serif" style="font-family: sans-serif">Sans-serif</option>
@@ -140,8 +164,8 @@
             </div>
             <!-- Font options -->
             <div class="row checkbox-options">
-              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Options</p></div>
-              <div class="col-md-7 center-text">
+              <div class="col-md-3 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Options</p></div>
+              <div class="col-md-6 center-text">
                 <div class="btn-group btn-group-md" role="toolbar">
                   <button type="button" class="btn btn-default font-option" value="bold" style="font-weight: bold">Bold</button>
                   <button type="button" class="btn btn-default font-option" value="italic" style="font-style: italic">Italic</button>
@@ -151,14 +175,14 @@
             </div>
             <!-- Font size -->
             <div class="row">
-              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Size</p></div>
-              <div class="col-md-7 col-xs-11 slider-container"><input id="bar-fontSize" type="range" min="8" max="36" step="1" value="20"/></div>
+              <div class="col-md-3 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Font Size</p></div>
+              <div class="col-md-6 col-xs-11 slider-container"><input id="bar-fontSize" type="range" min="8" max="36" step="1" value="20"/></div>
               <div class="col-md-1 col-xs-1 value-text"><p><span id="bar-fontSize-display"></span></p></div>
             </div>
             <!-- Text margin -->
             <div class="row">
-              <div class="col-md-2 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Margin</p></div>
-              <div class="col-md-7 col-xs-11 slider-container"><input id="bar-text-margin" type="range" min="-15" max="40" step="1" value="0"/></div>
+              <div class="col-md-3 col-md-offset-1 col-xs-12 col-xs-offset-0 description-text"><p>Text Margin</p></div>
+              <div class="col-md-6 col-xs-11 slider-container"><input id="bar-text-margin" type="range" min="-15" max="40" step="1" value="0"/></div>
               <div class="col-md-1 col-xs-1 col-xs-11 value-text"><p><span id="bar-text-margin-display"></span></p></div>
             </div>
           </div>
