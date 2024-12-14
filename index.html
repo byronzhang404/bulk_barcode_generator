@@ -101,6 +101,16 @@
             display: flex;
             justify-content: space-between;
         }
+        /* 添加以下媒体查询 */
+        @media (max-width: 1024px) {
+            .steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .step {
+                max-width: 100%;
+            }
+        }
         .step {
             flex: 1;
             text-align: center;
